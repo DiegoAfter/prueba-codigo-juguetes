@@ -8,65 +8,65 @@
   body {
     margin: 0;
     padding: 20px;
-    background: linear-gradient(to right, #e0f7fa, #ffffff);
-    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    min-height: 100vh;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
   h1 {
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 20px;
     color: #333;
+    font-size: 24px;
   }
-  /* cuadrícula bonita y ajustada */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  .juguetes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 15px;
+    margin-top: 20px;
   }
-  /* tarjeta con colores suaves y sombras modernas */
-  .card {
-    background: #f0f4f8;
-    border-radius: 12px;
+  .juguete {
+    background: #fff;
+    border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 130px;
     padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
   }
-  .card:hover {
+  .juguete:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    background: #e0f7fa;
   }
-  /* imagen pequeña y centrada */
-  .card img {
-    width: 8px;
-    border-radius: 8px;
+  .juguete img {
+    width: 70px;
+    max-width: 80px;
+    border-radius: 5px;
     margin-bottom: 8px;
   }
-  /* nombre grande y destacado */
   .name {
-    font-size: 14px;
-    font-weight: bold;
-    margin: 5px 0;
-    text-align: center;
-    color: #222;
-  }
-  /* precio en color alegre */
-  .price {
     font-size: 13px;
+    font-weight: bold;
+    margin: 5px 0 3px 0;
+    text-align: center;
+    color: #555;
+  }
+  .price {
+    font-size: 12px;
     color: #28a745;
     margin-bottom: 8px;
   }
-  /* botón bonito y agradable */
   .btn {
     background: linear-gradient(to right, #56ab2f, #a8e063);
     border: none;
-    padding: 8px 12px;
+    padding: 6px 12px;
     border-radius: 8px;
     color: #fff;
-    font-size: 13px;
+    font-size: 12px;
     cursor: pointer;
+    width: 100%;
     transition: background 0.3s, transform 0.2s;
   }
   .btn:hover {
@@ -79,20 +79,34 @@
 
 <h1>Hola, estos son los juguetes que recomendamos</h1>
 
-<div class="grid">
-  <!-- Aquí puedes generar con PHP los cuadros -->
-  <div class="card">
-    <img src="http://localhost/prueba-codigo-juguetes/img/auto.png" alt="Auto" />
-    <div class="name">Auto</div>
-    <div class="price">$150.00</div>
-    <button class="btn">Enviar</button>
-  </div>
-  <div class="card">
-    <img src="http://localhost/prueba-codigo-juguetes/img/muñeca.png" alt="Muñeca" />
-    <div class="name">Muñeca</div>
-    <div class="price">$150.00</div>
-    <button class="btn">Enviar</button>
-  </div>
+<div class="juguetes-container">
+  <?php
+  // Esto asume que tienes tus datos en sesión y que bien cargaste las imágenes en tu carpeta img/
+  include 'php/conexion.php';
+  session_start();
+  $genero = $_SESSION['genero'] ?? '';
+
+  $stmt = $conexion->prepare("SELECT nombre, descripcion, imagen_url FROM juguetes WHERE genero = :genero");
+  $stmt->bindParam(':genero', $genero);
+  $stmt->execute();
+  $juguetes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  
+  if ($juguetes && count($juguetes) > 0) {
+    foreach ($juguetes as $juguete) {
+      $nombre = htmlspecialchars($juguete['nombre']);
+      $descripcion = htmlspecialchars($juguete['descripcion']);
+      $imagen = htmlspecialchars($juguete['imagen_url']);
+      echo "<div class='juguete'>";
+      echo "<img src='{$imagen}' alt='{$nombre}'>";
+      echo "<div class='name'>{$nombre}</div>";
+      echo "<div class='price'>$150.00</div>"; // ajusta o hace dinámico el precio
+      echo "<button class='btn'>Enviar</button>";
+      echo "</div>";
+    }
+  } else {
+    echo "<p>No hay juguetes disponibles para este género.</p>";
+  }
+  ?>
 </div>
 
 </body>

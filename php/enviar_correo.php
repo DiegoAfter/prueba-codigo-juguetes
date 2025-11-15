@@ -42,8 +42,8 @@ echo "<p>Para: " . htmlspecialchars($email) . "</p>";
 echo "<p>Asunto: Tus juguetes recomendados</p>";
 echo "<div style='border:1px dashed #ccc;padding:10px;'>" . $body . "</div>";
 
-// Para enviar en producción, descomenta y configura SMTP en php.ini
-/*
+
+
 $headers  = "MIME-Version: 1.0\r\n";
 $headers .= "Content-type: text/html; charset=UTF-8\r\n";
 $headers .= "From: no-reply@tusitio.com\r\n";
@@ -53,5 +53,5 @@ if (mail($email, "Tus juguetes recomendados", $body, $headers)) {
 } else {
     echo "Error al enviar el correo.";
 }
-*/
+
 ?>
