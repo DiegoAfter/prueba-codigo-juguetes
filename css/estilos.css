@@ -17,11 +17,11 @@ h1 {
 
 /* Contenedor de los juguetes en grid bonito */
 .juguetes-container {
-  display: flex;             /* Usamos flex para alinearlos en fila */
-  flex-wrap: wrap;           /* Que pasen a la siguiente fila si no caben en una línea */
-  justify-content: center;   /* Centra todas las tarjetas en la fila */
-  gap: 15px;                 /* Espacio entre tarjetas */
-  margin-top: 20px;          /* Separación arriba */
+  display: flex;             
+  flex-wrap: wrap;          
+  justify-content: center;   
+  gap: 15px;                
+  margin-top: 20px;          
 }
 
 /* Tarjeta de juguete, más ajustada y moderna */

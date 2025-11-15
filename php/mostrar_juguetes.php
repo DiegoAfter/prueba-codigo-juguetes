@@ -17,7 +17,7 @@ if ($juguetes && count($juguetes) > 0) {
         echo "<div class='juguete'>";
         echo "<img src='{$imagen}' alt='{$nombre}'>";
         echo "<div class='name'>{$nombre}</div>";
-        echo "<div class='price'>$150.00</div>"; // Puedes hacer dinámico o cambiar el precio
+        echo "<div class='price'>$150.00</div>"; 
         echo "<button class='btn'>Enviar</button>";
         echo "</div>";
     }
