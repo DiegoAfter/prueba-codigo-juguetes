@@ -16,5 +16,12 @@
 <form action="php/enviar_correo.php" method="POST" class="enviar-form">
   <button type="submit" class="btn-enviar">Enviar Información</button>
 </form>
+
+<form action="php/enviar_correo.php" method="POST" id="formEnviar" class="enviar-form">
+  <input type="hidden" name="nombre" value="<?php echo htmlspecialchars($_SESSION['nombre']); ?>">
+  <input type="hidden" name="email" value="<?php echo htmlspecialchars($_SESSION['email']); ?>">
+  <input type="hidden" name="genero" value="<?php echo htmlspecialchars($_SESSION['genero']); ?>">
+  <button type="submit" class="btn-enviar">Enviar Información</button>
+</form>
 </body>
 </html>
