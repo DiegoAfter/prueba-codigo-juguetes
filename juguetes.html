@@ -3,25 +3,27 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Juguetes para <?php session_start(); echo $_SESSION['nombre']; ?></title>
+<title>Juguetes para <?php session_start(); echo htmlspecialchars($_SESSION['nombre']); ?></title>
 <link rel="stylesheet" href="css/estilos.css" />
 </head>
 <body>
+
 <div class="header">
   <h1>Hola, <?php echo htmlspecialchars($_SESSION['nombre']); ?>, estos son los juguetes que recomendamos</h1>
 </div>
+
+<!-- Contenedor de juguetes -->
 <div class="juguetes-container" id="juguetes">
   <?php include 'php/mostrar_juguetes.php'; ?>
 </div>
-<form action="php/enviar_correo.php" method="POST" class="enviar-form">
-  <button type="submit" class="btn-enviar">Enviar Información</button>
-</form>
 
+<!-- Formulario para enviar la info al email -->
 <form action="php/enviar_correo.php" method="POST" id="formEnviar" class="enviar-form">
   <input type="hidden" name="nombre" value="<?php echo htmlspecialchars($_SESSION['nombre']); ?>">
   <input type="hidden" name="email" value="<?php echo htmlspecialchars($_SESSION['email']); ?>">
   <input type="hidden" name="genero" value="<?php echo htmlspecialchars($_SESSION['genero']); ?>">
   <button type="submit" class="btn-enviar">Enviar Información</button>
 </form>
+
 </body>
 </html>

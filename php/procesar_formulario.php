@@ -1,22 +1,17 @@
 <?php
 session_start();
 
-if (isset($_POST['nombre'])) {
-    $_SESSION['nombre'] = $_POST['nombre'];
-}
-if (isset($_POST['genero'])) {
-    $_SESSION['genero'] = $_POST['genero'];
+// Verificar que los datos llegan
+if (!isset($_POST['nombre']) || !isset($_POST['email']) || !isset($_POST['genero'])) {
+    die('Faltan los datos del formulario.');
 }
 
-//  agregar cookies
-if (isset($_POST['nombre'])) {
-    setcookie('nombre', $_POST['nombre'], time() + 3600);
-}
-if (isset($_POST['genero'])) {
-    setcookie('genero', $_POST['genero'], time() + 3600);
-}
+// Guardar en sesión
+$_SESSION['nombre'] = $_POST['nombre'];
+$_SESSION['email'] = $_POST['email'];
+$_SESSION['genero'] = $_POST['genero'];
 
-// Rediridigir después
+// Redirigir a la página de juguetes
 header('Location: ../juguetes.html');
 exit;
 ?>
