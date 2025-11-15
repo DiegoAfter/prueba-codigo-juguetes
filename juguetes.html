@@ -3,101 +3,96 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Juguetes recomendados</title>
+<title>Juguetes Recomendados</title>
 <style>
-  /* Fondo suave y centrado */
   body {
     margin: 0;
     padding: 20px;
-    background: #f0f0f0;
-    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #e0f7fa, #ffffff);
+    font-family: 'Arial', sans-serif;
   }
-
-  /* Título centrado */
   h1 {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     color: #333;
   }
-
-  /* Contenedor de los cuadros que ocupan toda la pantalla */
+  /* cuadrícula bonita y ajustada */
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
   }
-
-  /* Cuadro grande de juguete */
+  /* tarjeta con colores suaves y sombras modernas */
   .card {
-    background: #fff;
-    border-radius: 15px;
-    padding: 15px;
+    background: #f0f4f8;
+    border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
   }
-
-  /* Imagen grande y centrada */
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    background: #e0f7fa;
+  }
+  /* imagen pequeña y centrada */
   .card img {
-    width: 100%;
-    max-width: 150px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
-
-  /* Nombre grande */
-  .name {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 10px 0 5px 0;
-    text-align: center;
-  }
-
-  /* Precio grande y destacado */
-  .price {
-    font-size: 14px;
-    color: green;
-    margin-bottom: 10px;
-  }
-
-  /* Botón grande y centrado */
-  .btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 14px;
-    border: none;
+    width: 80px;
     border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    width: 100%;
+    margin-bottom: 8px;
   }
-
-  /* Efecto al pasar el ratón */
+  /* nombre grande y destacado */
+  .name {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px 0;
+    text-align: center;
+    color: #222;
+  }
+  /* precio en color alegre */
+  .price {
+    font-size: 13px;
+    color: #28a745;
+    margin-bottom: 8px;
+  }
+  /* botón bonito y agradable */
+  .btn {
+    background: linear-gradient(to right, #56ab2f, #a8e063);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
   .btn:hover {
-    background-color: #66bb6a;
+    background: linear-gradient(to right, #2b8a3e, #74a96b);
+    transform: translateY(-1px);
   }
 </style>
 </head>
 <body>
 
 <h1>Hola, estos son los juguetes que recomendamos</h1>
+
 <div class="grid">
-  <!-- Puedes generar estos cuadros con PHP, pero aquí los pongo a mano para ejemplo -->
+  <!-- Aquí puedes generar con PHP los cuadros -->
   <div class="card">
-    <img src="http://localhost/prueba-codigo-juguetes/img/auto.png" alt="Auto">
+    <img src="http://localhost/prueba-codigo-juguetes/img/auto.png" alt="Auto" />
     <div class="name">Auto</div>
     <div class="price">$150.00</div>
     <button class="btn">Enviar</button>
   </div>
   <div class="card">
-    <img src="http://localhost/prueba-codigo-juguetes/img/muñeca.png" alt="Muñeca">
+    <img src="http://localhost/prueba-codigo-juguetes/img/muñeca.png" alt="Muñeca" />
     <div class="name">Muñeca</div>
     <div class="price">$150.00</div>
     <button class="btn">Enviar</button>
   </div>
-  <!-- Añade más cuadros aquí -->
 </div>
 
 </body>
