@@ -3,28 +3,102 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Juguetes para <?php session_start(); echo htmlspecialchars($_SESSION['nombre']); ?></title>
-<link rel="stylesheet" href="css/estilos.css" />
+<title>Juguetes recomendados</title>
+<style>
+  /* Fondo suave y centrado */
+  body {
+    margin: 0;
+    padding: 20px;
+    background: #f0f0f0;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Título centrado */
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+  }
+
+  /* Contenedor de los cuadros que ocupan toda la pantalla */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+  }
+
+  /* Cuadro grande de juguete */
+  .card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+
+  /* Imagen grande y centrada */
+  .card img {
+    width: 100%;
+    max-width: 150px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* Nombre grande */
+  .name {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0 5px 0;
+    text-align: center;
+  }
+
+  /* Precio grande y destacado */
+  .price {
+    font-size: 14px;
+    color: green;
+    margin-bottom: 10px;
+  }
+
+  /* Botón grande y centrado */
+  .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  /* Efecto al pasar el ratón */
+  .btn:hover {
+    background-color: #66bb6a;
+  }
+</style>
 </head>
 <body>
 
-<div class="header">
-  <h1>Hola, <?php echo htmlspecialchars($_SESSION['nombre']); ?>, estos son los juguetes que recomendamos</h1>
+<h1>Hola, estos son los juguetes que recomendamos</h1>
+<div class="grid">
+  <!-- Puedes generar estos cuadros con PHP, pero aquí los pongo a mano para ejemplo -->
+  <div class="card">
+    <img src="http://localhost/prueba-codigo-juguetes/img/auto.png" alt="Auto">
+    <div class="name">Auto</div>
+    <div class="price">$150.00</div>
+    <button class="btn">Enviar</button>
+  </div>
+  <div class="card">
+    <img src="http://localhost/prueba-codigo-juguetes/img/muñeca.png" alt="Muñeca">
+    <div class="name">Muñeca</div>
+    <div class="price">$150.00</div>
+    <button class="btn">Enviar</button>
+  </div>
+  <!-- Añade más cuadros aquí -->
 </div>
-
-<!-- Contenedor de juguetes -->
-<div class="juguetes-container" id="juguetes">
-  <?php include 'php/mostrar_juguetes.php'; ?>
-</div>
-
-<!-- Formulario para enviar la info al email -->
-<form action="php/enviar_correo.php" method="POST" id="formEnviar" class="enviar-form">
-  <input type="hidden" name="nombre" value="<?php echo htmlspecialchars($_SESSION['nombre']); ?>">
-  <input type="hidden" name="email" value="<?php echo htmlspecialchars($_SESSION['email']); ?>">
-  <input type="hidden" name="genero" value="<?php echo htmlspecialchars($_SESSION['genero']); ?>">
-  <button type="submit" class="btn-enviar">Enviar Información</button>
-</form>
 
 </body>
 </html>
-
