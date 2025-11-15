@@ -1,9 +1,11 @@
 <?php
-// Obtener datos del usuario y juguetes )
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Obtener datos del usuario y la lista de juguetes
 $nombre = isset($_SESSION['nombre']) ? $_SESSION['nombre'] : 'Cliente';
 $email = isset($_SESSION['email']) ? $_SESSION['email'] : 'correo@ejemplo.com';
 
-// Lista de juguetes 
 $juguetes = [
     [
         'nombre' => 'Auto',
@@ -17,7 +19,7 @@ $juguetes = [
     ]
 ];
 
-// Contenido Html para email
+// Construir contenido HTML del "email"
 $body = "<html><body>";
 $body .= "<h2>Hola, " . htmlspecialchars($nombre) . "</h2>";
 $body .= "<p>Estos son los juguetes recomendados para ti:</p>";
@@ -34,13 +36,14 @@ foreach ($juguetes as $juguete) {
 }
 $body .= "</body></html>";
 
-// En lugar de enviar el mail, mostrar en pantalla cómo sería
+// Mostrar en pantalla la vista previa del "email"
 echo "<h3>Este sería el email enviado:</h3>";
 echo "<p>Para: " . htmlspecialchars($email) . "</p>";
 echo "<p>Asunto: Tus juguetes recomendados</p>";
 echo "<div style='border:1px dashed #ccc;padding:10px;'>" . $body . "</div>";
 
-
+// Para enviar en producción, descomenta y configura SMTP en php.ini
+/*
 $headers  = "MIME-Version: 1.0\r\n";
 $headers .= "Content-type: text/html; charset=UTF-8\r\n";
 $headers .= "From: no-reply@tusitio.com\r\n";
@@ -50,5 +53,5 @@ if (mail($email, "Tus juguetes recomendados", $body, $headers)) {
 } else {
     echo "Error al enviar el correo.";
 }
-
+*/
 ?>
