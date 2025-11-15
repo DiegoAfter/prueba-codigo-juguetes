@@ -5,13 +5,13 @@ include 'conexion.php';
 session_start();
 $genero = $_SESSION['genero'] ?? '';
 
-// Preparamos la consulta para obtener los juguetes 
+// Consulta para juguetes
 $stmt = $conexion->prepare("SELECT nombre, descripcion, imagen_url FROM juguetes WHERE genero = :genero");
 $stmt->bindParam(':genero', $genero);
 $stmt->execute();
 $juguetes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Verificamos si hay juguetes y los mostramos
+// Juguetes a mostrar
 if ($juguetes && count($juguetes) > 0) {
     foreach ($juguetes as $juguete) {
         echo "<div class='juguete'>";
