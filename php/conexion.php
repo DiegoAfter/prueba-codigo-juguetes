@@ -1,9 +1,9 @@
 <?php
-// Datos de conexión - ajusta según tu setup
+// Datos de conexión 
 $host = 'localhost';
 $db   = 'catalogo_juguetes';
-$user = 'root'; // en XAMPP, usuario por defecto
-$pass = '';     // en XAMPP, contraseña vacía
+$user = 'root'; // usuario por defecto
+$pass = '';     // contraseña vacía
 
 try {
     $conexion = new PDO("mysql:host=$host;dbname=$db", $user, $pass);

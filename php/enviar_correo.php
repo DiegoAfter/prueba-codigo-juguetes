@@ -6,13 +6,13 @@ $genero = $_POST['genero'];
 
 include 'conexion.php';
 
-// Obtenemos los juguetes para ese género
+// Juguetes para niño/niña
 $stmt = $conexion->prepare("SELECT nombre, descripcion FROM juguetes WHERE genero = :genero");
 $stmt->bindParam(':genero', $genero);
 $stmt->execute();
 $juguetes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Construir el cuerpo del email
+// email
 $cuerpo = "Hola, $nombre.\nEstos son los juguetes recomendados para ti:\n\n";
 
 foreach ($juguetes as $juguete) {
