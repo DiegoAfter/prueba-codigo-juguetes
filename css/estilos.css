@@ -90,7 +90,7 @@ form button:hover {
 /* Estilo de cada tarjeta de juguete */
 .juguete {
   background: #fff;
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   width: 150px;
   padding: 10px;
@@ -100,14 +100,14 @@ form button:hover {
 
 .juguete:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 10px rgba(0,0,0,0.2);
 }
 
 .juguete img {
-  width: 100%;
+  width: 50%;
   height: auto;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 .juguete h3 {
