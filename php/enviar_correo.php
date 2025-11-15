@@ -1,5 +1,5 @@
 <?php
-// Ussuario y Juguetes
+// Uusuario y Juguetes
 $nombre = isset($_SESSION['nombre']) ? $_SESSION['nombre'] : 'Cliente';
 $email = isset($_SESSION['email']) ? $_SESSION['email'] : 'correo@ejemplo.com';
 
@@ -17,7 +17,7 @@ $juguetes = [
     ]
 ];
 
-// Construir contenido HTML del email
+// Html del email
 $body = "<html><body>";
 $body .= "<h2>Hola, " . htmlspecialchars($nombre) . "</h2>";
 $body .= "<p>Estos son los juguetes recomendados para ti:</p>";
@@ -35,15 +35,6 @@ foreach ($juguetes as $juguete) {
 $body .= "</body></html>";
 
 
-$headers  = "MIME-Version: 1.0\r\n";
-$headers .= "Content-type: text/html; charset=UTF-8\r\n";
-$headers .= "From: no-reply@tusitio.com\r\n";
-
-if (mail($email, "Tus juguetes recomendados", $body, $headers)) {
-    echo "Correo enviado correctamente.";
-} else {
-    echo "Error al enviar el correo.";
-}
 echo "<h3>Este sería el email enviado:</h3>";
 echo "<p>Para: " . htmlspecialchars($email) . "</p>";
 echo "<p>Asunto: Tus juguetes recomendados</p>";
